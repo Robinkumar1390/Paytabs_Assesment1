@@ -1,0 +1,18 @@
+body {
+    background: #f4f4f4;
+    font-family: Arial;
+}
+
+.box {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background: white;
+    text-align: center;
+}
+
+input, select, button {
+    width: 90%;
+    margin: 8px 0;
+    padding: 8px;
+}
