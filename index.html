@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Transaction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="box">
+        <h2>Transaction</h2>
+        <input type="password" id="pin" placeholder="PIN">
+        <input type="number" id="amount" placeholder="Amount">
+        <select id="type">
+            <option value="credit">Credit</option>
+            <option value="debit">Debit</option>
+        </select>
+        <button onclick="send()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function send() {
+            fetch("/transaction", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    pin: document.getElementById("pin").value,
+                    amount: Number(document.getElementById("amount").value),
+                    type: document.getElementById("type").value
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("result").innerText = data.message
+            })
+        }
+    </script>
+</body>
+</html>
